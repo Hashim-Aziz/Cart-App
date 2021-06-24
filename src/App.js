@@ -1,7 +1,20 @@
 import React from "react";
+import Navbar from "./Navbar";
+import CartContainer from "./CartContainer";
+import { useGlobalContext } from "./context";
 
 function App() {
-  return <h2>Hello world</h2>;
+  const { loading } = useGlobalContext();
+  if (loading) {
+    <div className="loading">
+      <h1>Loading...</h1>
+    </div>;
+  }
+  return (
+    <main>
+      <Navbar />
+    </main>
+  );
 }
 
 export default App;
