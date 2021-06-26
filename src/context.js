@@ -15,8 +15,18 @@ const initalState = {
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initalState);
 
+  const Increase = (id) => {
+    dispatch({ type: "INCREASE", payload: id });
+  };
+
+  const Decrease = (id) => {
+    dispatch({ type: "DECREASE", payload: id });
+  };
+
   return (
-    <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ ...state, Increase, Decrease }}>
+      {children}
+    </AppContext.Provider>
   );
 };
 
