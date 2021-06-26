@@ -17,6 +17,9 @@ const reducer = (state, action) => {
     });
     return { ...state, cart: newCart };
   }
+  if (action.type === "CLEARCART") {
+    return { ...state, cart: [] };
+  }
 };
 
 export default reducer;
