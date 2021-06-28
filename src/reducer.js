@@ -9,12 +9,14 @@ const reducer = (state, action) => {
     return { ...state, cart: newCart };
   }
   if (action.type === "DECREASE") {
-    let newCart = state.cart.map((item) => {
-      if (item.id === action.payload) {
-        return { ...item, amount: item.amount - 1 };
-      }
-      return item;
-    });
+    let newCart = state.cart
+      .map((item) => {
+        if (item.id === action.payload) {
+          return { ...item, amount: item.amount - 1 };
+        }
+        return item;
+      })
+      .filter((item) => item.amount !== 0);
     return { ...state, cart: newCart };
   }
   if (action.type === "CLEARCART") {
