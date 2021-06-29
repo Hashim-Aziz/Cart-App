@@ -40,6 +40,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "DISPLAY_ITEMS", payload: cart });
   };
 
+  const toggleAmount = (id, type) => {
+    dispatch({ type: "TOGGLE_AMOUNT", payload: { id, type } });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -50,7 +54,7 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ ...state, Increase, Decrease, clearcart, Remove }}
+      value={{ ...state, Increase, Decrease, clearcart, Remove, toggleAmount }}
     >
       {children}
     </AppContext.Provider>
